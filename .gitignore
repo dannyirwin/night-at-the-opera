@@ -3,8 +3,10 @@ node_modules
 public
 prof
 tsconfig.tsbuildinfo
+# Obsidian settings — open vault/ as the vault; settings stay local
 .obsidian
 .quartz-cache
+# Machine-local secrets (e.g. vault/private/) — never commit
 private/
 .replit
 replit.nix

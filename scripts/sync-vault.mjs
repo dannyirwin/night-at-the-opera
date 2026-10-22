@@ -2,10 +2,10 @@
 /**
  * Sync published Obsidian notes into content/.
  * Only markdown with `publish: true` (quoted or unquoted) is copied,
- * so collaborators/CMS never see DM-only notes.
+ * so the public wiki never shows DM-only notes.
  *
- * Env:
- *   VAULT_DIR — absolute path to the Obsidian vault (required unless default exists)
+ * Default vault: ./vault (open that folder in Obsidian).
+ * Override with VAULT_DIR if needed.
  */
 import fs from "node:fs"
 import path from "node:path"
@@ -14,8 +14,7 @@ import { fileURLToPath } from "node:url"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const WIKI_ROOT = path.resolve(__dirname, "..")
 const CONTENT_DIR = path.join(WIKI_ROOT, "content")
-const VAULT_DIR =
-  process.env.VAULT_DIR || path.resolve(WIKI_ROOT, "..", "Campaign Vault")
+const VAULT_DIR = process.env.VAULT_DIR || path.join(WIKI_ROOT, "vault")
 
 const SKIP_DIRS = new Set([
   ".git",
@@ -24,6 +23,7 @@ const SKIP_DIRS = new Set([
   "Excalidraw",
   "node_modules",
   ".trash",
+  "private",
 ])
 const SKIP_NAMES = new Set([".DS_Store"])
 
@@ -85,7 +85,7 @@ function ensureIndexPublish() {
   if (!fs.existsSync(indexPath)) {
     fs.writeFileSync(
       indexPath,
-      `---\ntitle: Campaign Wiki\npublish: true\n---\n\n# Campaign Wiki\n\nAdd notes in your Obsidian vault with \`publish: true\`, then run \`npm run publish\`.\n`,
+      `---\ntitle: Campaign Wiki\npublish: true\n---\n\n# Campaign Wiki\n\nAdd notes in \`vault/\` with \`publish: true\`, then run \`npm run publish\`.\n`,
     )
     return
   }
@@ -101,7 +101,7 @@ function ensureIndexPublish() {
 function main() {
   if (!fs.existsSync(VAULT_DIR)) {
     console.error(`Vault not found: ${VAULT_DIR}`)
-    console.error(`Set VAULT_DIR to your Obsidian vault path, e.g.:`)
+    console.error(`Create vault/ (or set VAULT_DIR), then open that folder in Obsidian.`)
     console.error(`  VAULT_DIR="/path/to/vault" npm run sync`)
     process.exit(1)
   }
@@ -112,6 +112,7 @@ function main() {
   ensureIndexPublish()
 
   console.log(`Synced ${copied} published note(s) from vault → content/`)
+  console.log(`Vault: ${VAULT_DIR}`)
   console.log("Only notes with publish: true were copied")
   console.log("Next: npx quartz build --serve")
 }

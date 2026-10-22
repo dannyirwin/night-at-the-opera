@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Campaign Wiki
+  pageTitle: Night at the Opera
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics: null
   locale: en-US
-  baseUrl: YOUR_GITHUB_USER.github.io/YOUR_REPO
+  baseUrl: dannyirwin.github.io/night-at-the-opera
   ignorePatterns:
     - private
     - templates

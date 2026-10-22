@@ -1,15 +1,15 @@
 {
-  "name": "obsidian-quartz-wiki-template",
-  "description": "Obsidian → Quartz campaign wiki template (GitHub Pages)",
+  "name": "night-at-the-opera",
+  "description": "Night at the Opera campaign wiki (Obsidian → Quartz → GitHub Pages)",
   "private": true,
   "version": "5.0.0",
   "type": "module",
   "author": "dannyirwin",
   "license": "MIT",
-  "homepage": "https://github.com/dannyirwin/obsidian-quartz-wiki-template",
+  "homepage": "https://dannyirwin.github.io/night-at-the-opera/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dannyirwin/obsidian-quartz-wiki-template.git"
+    "url": "https://github.com/dannyirwin/night-at-the-opera.git"
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
