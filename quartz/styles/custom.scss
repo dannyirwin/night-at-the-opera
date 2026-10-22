@@ -1,0 +1,16 @@
+@use "./variables.scss" as *;
+
+// Match content page headers to the sidebar brand title style
+.page-header .article-title {
+  margin: 0.5rem 0 0;
+  font-size: 1.75rem;
+  font-family: var(--titleFont);
+  font-weight: 700;
+}
+
+// No publish/modified dates on the wiki
+.content-meta,
+ul.section-ul .meta,
+li.section-li .meta {
+  display: none;
+}

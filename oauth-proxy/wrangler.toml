@@ -1,0 +1,13 @@
+#:schema node_modules/wrangler/config-schema.json
+# Optional: password login + suggest-edit → GitHub issues.
+# Leave undeployed when AUTH_WORKER is empty in quartz/components/wikiAuth.ts.
+
+compatibility_date = "2025-11-17"
+main = "src/index.ts"
+name = "obsidian-quartz-wiki-auth"
+
+[vars]
+GITHUB_REPO = "YOUR_GITHUB_USER/YOUR_REPO"
+WIKI_ORIGIN = "https://YOUR_GITHUB_USER.github.io"
+WIKI_BASE = "https://YOUR_GITHUB_USER.github.io/YOUR_REPO"
+SESSION_DAYS = "30"
